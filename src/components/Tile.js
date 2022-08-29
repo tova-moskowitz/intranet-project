@@ -49,10 +49,7 @@ function Tile(props) {
           />
         }
         title={`${employee.fname} ${employee.lname}`}
-        subheader={
-          employee.gender[0].toUpperCase() +
-          employee.gender.substr(1).toLowerCase()
-        }
+        subheader={employee.gender}
       />
       <CardActions disableSpacing>
         <ExpandMore
