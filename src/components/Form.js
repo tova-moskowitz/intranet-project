@@ -3,12 +3,10 @@ import "../App.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import {
-  addNewEmployee,
-  fetchEmployees,
-} from "../features/employees/employeesSlice";
+import { addNewEmployee } from "../features/employees/employeesSlice";
 import { useDispatch } from "react-redux";
 
+//TODO add values to each of the fields to make it a controlled form
 export default function Form() {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
@@ -22,13 +20,12 @@ export default function Form() {
       photo: el.photo.value,
       email: el.email.value,
       phone: el.phone.value,
-      streetNum: el.streetNum.value,
+      streetNumber: el.streetNumber.value,
       streetName: el.streetName.value,
       timezone: el.timezone.value,
       dob: el.dob.value,
     };
     dispatch(addNewEmployee(newEmployee));
-    // dispatch(fetchEmployees());
   };
 
   const onChange = (e) => {
@@ -36,7 +33,7 @@ export default function Form() {
   };
 
   return (
-    <Box>
+    <Box sx={{ ml: 11 }}>
       <form onSubmit={handleSubmitForm}>
         <Box
           sx={{
@@ -67,15 +64,15 @@ export default function Form() {
           <TextField name="email" id="email" label="Email" variant="standard" />
           <TextField name="phone" id="phone" label="Phone" variant="standard" />
           <TextField
-            name="streetNum"
-            id="streetNum"
-            label="Address Street Number"
+            name="streetNumber"
+            id="streetNumber"
+            label="Street Number"
             variant="standard"
           />
           <TextField
             name="streetName"
             id="streetName"
-            label="Address Street Name"
+            label="Street Name"
             variant="standard"
           />
           <TextField
