@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const EMPLOYEES_URL = "https://randomuser.me/api/?results=9";
+const EMPLOYEES_URL = "https://randomuser.me/api/?results=12";
 
 const initialState = {
   employees: [],
