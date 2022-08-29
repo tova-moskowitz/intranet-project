@@ -22,10 +22,6 @@ function SimpleDialog(props) {
     onClose(selectedValue);
   };
 
-  const handleListItemClick = (value) => {
-    onClose(value);
-  };
-
   return (
     <Dialog sx={{ height: 600 }} onClose={handleClose} open={open}>
       <DialogTitle sx={{ ml: 9 }}>Add New Employee</DialogTitle>

@@ -4,5 +4,18 @@
 }
 
 .tile {
+  padding-left: 13px;
   list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin-left: 4%;
+}
+
+/* large-screen */
+@media screen and (min-width: 600px) {
+  .tile {
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 0;
+    gap: 1em 0;
+  }
 }

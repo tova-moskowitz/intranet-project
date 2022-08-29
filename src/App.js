@@ -43,13 +43,13 @@ function App() {
         employee.timezone.toLowerCase().includes(searchTerm.toLowerCase())
       ) {
         return (
-          <li key={i}>
+          <li className="singleTile" key={i}>
             <Tile employee={employeeObj} />
           </li>
         );
       } else if (!searchTerm) {
         return (
-          <li key={i}>
+          <li className="singleTile" key={i}>
             <Tile employee={employeeObj} />
           </li>
         );
@@ -67,20 +67,9 @@ function App() {
         Refresh Tiles
       </Button>
       <Dialog />
-      <ul
-        className="tile"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-        }}
-      >
-        {singleEmployee}
-      </ul>
+      <ul className="tile">{singleEmployee}</ul>
     </div>
   );
 }
 
 export default App;
-
-// the listing page should have a search, using place, gender, year/month of birth
-// error handling for when API fails to return data
