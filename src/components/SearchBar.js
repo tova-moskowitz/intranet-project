@@ -8,6 +8,8 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { useDispatch } from "react-redux";
+import { getSearchTerm } from "../features/search/searchSlice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -51,15 +53,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchBar() {
   const [value, setValue] = useState("");
+  const dispatch = useDispatch();
 
   const onChange = (event) => {
+    dispatch(getSearchTerm(event.target.value));
     setValue(event.target.value);
-  };
-
-  const onSearch = (searchTerm) => {
-    setValue(searchTerm);
-    // our api to fetch the search result
-    console.log("search ", searchTerm);
   };
 
   return (
@@ -74,12 +72,12 @@ export default function SearchBar() {
           >
             Our Intranet
           </Typography>
-          <Search onSubmit={onSearch}>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Search Employees…"
               inputProps={{ "aria-label": "search" }}
               onChange={onChange}
             />

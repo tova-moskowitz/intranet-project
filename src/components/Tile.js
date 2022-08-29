@@ -23,16 +23,7 @@ const ExpandMore = styled((props) => {
 }));
 
 function Tile(props) {
-  const {
-    fname,
-    lname,
-    gender,
-    streetName,
-    email,
-    phone,
-    photo,
-    timezone,
-  } = props;
+  const { employee } = props;
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -46,20 +37,19 @@ function Tile(props) {
         flexDirection: "column",
         maxWidth: 400,
         mt: 3,
-        ml: 3,
       }}
     >
       <CardHeader
         avatar={
           <Avatar
-            alt={`${fname} ${lname}`}
-            src={photo}
+            alt={`${employee.fname} ${employee.lname}`}
+            src={employee.photo}
             sx={{ width: 150, height: 150 }}
             variant="rounded"
           />
         }
-        title={`${fname} ${lname}`}
-        subheader={gender}
+        title={`${employee.fname} ${employee.lname}`}
+        subheader={employee.gender}
         // subheader={gender[0].toUpperCase() + gender.substr(1).toLowerCase()}
       />
       <CardActions disableSpacing>
@@ -76,10 +66,10 @@ function Tile(props) {
         <CardContent>
           <Box variant="body2" color="text.secondary">
             <ul className="tile">
-              <li>{email}</li>
-              <li>{phone}</li>
-              <li>{streetName}</li>
-              <li>{timezone}</li>
+              <li>{employee.email}</li>
+              <li>{employee.phone}</li>
+              <li>{employee.streetName}</li>
+              <li>{employee.timezone}</li>
             </ul>
           </Box>
         </CardContent>

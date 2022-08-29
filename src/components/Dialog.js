@@ -28,7 +28,7 @@ function SimpleDialog(props) {
 
   return (
     <Dialog sx={{ height: 600 }} onClose={handleClose} open={open}>
-      <DialogTitle>Add New Employee</DialogTitle>
+      <DialogTitle sx={{ ml: 9 }}>Add New Employee</DialogTitle>
       <Form sx={{ padding: 20, mb: 300 }} />
     </Dialog>
   );
@@ -56,7 +56,7 @@ export default function SimpleDialogDemo() {
   return (
     <div>
       <br />
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="contained" onClick={handleClickOpen}>
         Add New Employee
       </Button>
       <SimpleDialog

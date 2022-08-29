@@ -3,18 +3,15 @@ import Tile from "./components/Tile.js";
 import Dialog from "./components/Dialog";
 import { useEffect } from "react";
 import SearchBar from "./components/SearchBar";
-import TopBar from "./components/TopBar";
 import Button from "@mui/material/Button";
-import Filter from "./components/Filter";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchEmployees } from "./features/employees/employeesSlice";
 
 function App() {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
-  console.log(selector);
+  const searchTerm = selector.search.searchTerm;
 
-  useSelector((state) => state);
   useEffect(() => {
     dispatch(fetchEmployees());
   }, []);
@@ -23,33 +20,49 @@ function App() {
     dispatch(fetchEmployees());
   };
   let singleEmployee = [];
+
   if (selector.employees.length) {
     singleEmployee = selector.employees.map((employee, i) => {
-      return (
-        <li key={i}>
-          <Tile
-            fname={employee.fname}
-            lname={employee.lname}
-            gender={employee.gender}
-            streetName={`${employee.streetNum} ${employee.streetName}`}
-            email={employee.email}
-            phone={employee.phone}
-            photo={employee.photo}
-            timezone={employee.timezone}
-          />
-        </li>
-      );
+      const employeeObj = {
+        fname: employee.fname,
+        lname: employee.lname,
+        gender: employee.gender,
+        streetName: `${employee.streetNumber} ${employee.streetName}`,
+        email: employee.email,
+        phone: employee.phone,
+        photo: employee.photo,
+        timezone: employee.timezone,
+        dob: employee.dob,
+      };
+      if (
+        (searchTerm && searchTerm.toLowerCase() === employee.gender) ||
+        employee.fname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        employee.lname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        employee.streetName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        employee.dob.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        employee.timezone.toLowerCase().includes(searchTerm.toLowerCase())
+      ) {
+        return (
+          <li key={i}>
+            <Tile employee={employeeObj} />
+          </li>
+        );
+      } else if (!searchTerm) {
+        return (
+          <li key={i}>
+            <Tile employee={employeeObj} />
+          </li>
+        );
+      }
     });
   }
   return (
     <div className="App">
-      {/* <SearchBar /> */}
-      <TopBar />
-      <Filter />
+      <SearchBar />
       <Button
         onClick={refreshEmployees}
-        sx={{ maxWidth: 150 }}
-        variant="outlined"
+        sx={{ maxWidth: 150, mt: 4 }}
+        variant="contained"
       >
         Refresh Tiles
       </Button>
@@ -69,17 +82,5 @@ function App() {
 
 export default App;
 
-// create a web form to create a new employee
-// create a listing page that lists all employees, with a tile for each one
-// a tile must be clickable and on click, more details should open out
 // the listing page should have a search, using place, gender, year/month of birth
-// card must include a refresh button
-// add dob, even though not indicated on prompt
 // error handling for when API fails to return data
-
-// 1. create the list of users, using the '?results=x' parameter
-
-// Material UI component: CARD
-// 2. create a card for a single user
-// 3. expand details upon clicking the card
-// 4. create button on card

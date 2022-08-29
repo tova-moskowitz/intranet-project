@@ -1,12 +1,12 @@
-import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const EMPLOYEES_URL = "https://randomuser.me/api/?results=5";
+const EMPLOYEES_URL = "https://randomuser.me/api/?results=9";
 
 const initialState = {
   employees: [],
   status: false,
-  error: "",
+  searchTerm: "",
 };
 
 export const fetchEmployees = createAsyncThunk(
@@ -22,6 +22,7 @@ export const employeesSlice = createSlice({
   initialState,
   status: null,
   reducers: {
+    //TODO check that form fields are filled out before adding a new user
     addNewEmployee: (state, action) => {
       state.unshift({ ...action.payload });
     },
@@ -35,7 +36,7 @@ export const employeesSlice = createSlice({
           gender: employee.gender,
           email: employee.email,
           phone: employee.cell,
-          streetNum: employee.location.street.number,
+          streetNumber: employee.location.street.number,
           streetName: employee.location.street.name,
           photo: employee.picture.large,
           timezone: employee.location.timezone.description,
@@ -46,6 +47,6 @@ export const employeesSlice = createSlice({
   },
 });
 
-export const { getEmployees, addNewEmployee } = employeesSlice.actions;
+export const { addNewEmployee } = employeesSlice.actions;
 
 export default employeesSlice.reducer;
