@@ -13,3 +13,4 @@
 - Make it a controlled form
 - Close form dialog box on submit
 - Error message when search returns no results
+- Filter is now together with search- must build out filter separately
