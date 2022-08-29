@@ -43,13 +43,13 @@ function App() {
         employee.timezone.toLowerCase().includes(searchTerm.toLowerCase())
       ) {
         return (
-          <li className="singleTile" key={i}>
+          <li key={i}>
             <Tile employee={employeeObj} />
           </li>
         );
       } else if (!searchTerm) {
         return (
-          <li className="singleTile" key={i}>
+          <li key={i}>
             <Tile employee={employeeObj} />
           </li>
         );

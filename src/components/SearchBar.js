@@ -59,6 +59,7 @@ export default function SearchBar() {
     setValue(event.target.value);
   };
 
+  //TODO add x for clearing search box
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">

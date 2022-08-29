@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # This project uses the Material UI library for the following components:
 
 - Card
@@ -9,3 +5,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Search bar
 - Dialog box
 - Form field inputs
+
+# Next steps:
+
+- Validation for the form fields
+- Icon to clear search field
+- Make it a controlled form
+- Close form dialog box on submit

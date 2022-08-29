@@ -64,7 +64,7 @@ function Tile(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Box variant="body2" color="text.secondary">
-            <ul className="tile">
+            <ul className="expandedTileList">
               <li>{employee.email}</li>
               <li>{employee.phone}</li>
               <li>{employee.streetName}</li>

@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 export default function Form() {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
+
   const handleSubmitForm = (e) => {
     e.preventDefault();
     const el = e.target;
