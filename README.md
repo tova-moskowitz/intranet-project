@@ -12,3 +12,4 @@
 - Icon to clear search field
 - Make it a controlled form
 - Close form dialog box on submit
+- Error message when search returns no results
